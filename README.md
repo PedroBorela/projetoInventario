@@ -1,7 +1,5 @@
 # Serenity - Gestão de Inventário Pós-Óbito
 
-Este projeto foi refatorado para uma arquitetura moderna utilizando **React** no frontend e **JSON Server** no backend.
-
 ## Estrutura do Projeto
 
 - **/client**: Código do frontend (React + Vite + Tailwind CSS).
@@ -41,7 +39,5 @@ A aplicação abrirá no seu navegador (geralmente em `http://localhost:5173`).
 - **Dívidas**: Cadastro e gerenciamento de dívidas.
 - **Inventário**: Cálculo de partilha e geração de relatório PDF.
 
-## Solução de Problemas
 
-Se você encontrar erros relacionados ao caminho do arquivo (ex: `informatica&Sociedade`), os scripts `package.json` já foram ajustados para contornar isso usando caminhos diretos para o `node`.
 
