@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenity - Gestão de Inventário Pós-Óbito</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --success-color: #27ae60;
+            --warning-color: #e67e22;
+            --error-color: #e74c3c;
+            --text-color: #2c3e50;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 140px);
+        }
+
+        .welcome-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+
+        .welcome-section h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 400;
+        }
+
+        .welcome-section p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            color: #555;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        .progress-section {
+            margin-top: 1rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Forms */
+        .form-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .form-section h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Tables */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.875rem;
+        }
+
+        .btn-edit {
+            background-color: var(--warning-color);
+        }
+
+        .btn-delete {
+            background-color: var(--error-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .support-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        /* Helper classes */
+        .hidden {
+            display: none;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <span class="logo-icon">🕊️</span>
+                <h1>Serenity - Inventário Pós-Óbito</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" data-section="dashboard">Dashboard</a></li>
+                    <li><a href="#" data-section="bens">Bens</a></li>
+                    <li><a href="#" data-section="herdeiros">Herdeiros</a></li>
+                    <li><a href="#" data-section="dividas">Dívidas</a></li>
+                    <li><a href="#" data-section="inventario">Processo de Inventário</a></li>
+                    <li><a href="#" data-section="documentos">Documentos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard-section">
+            <div class="welcome-section">
+                <h2>Bem-vindo ao Sistema de Gestão de Inventário</h2>
+                <p>Este sistema foi desenvolvido para auxiliar no processo de inventário de forma sensível e organizada
+                    durante este momento delicado. Estamos aqui para ajudar.</p>
+                <a href="#" class="btn" id="start-process-btn">Iniciar Novo Processo de Inventário</a>
+            </div>
+
+            <div class="dashboard">
+                <div class="card">
+                    <h3><span class="card-icon">🏠</span> Bens Registrados</h3>
+                    <p>Total de bens cadastrados no inventário:</p>
+                    <h2 id="total-bens">0</h2>
+                    <div class="progress-section">
+                        <p>Completude do cadastro:</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 30%"></div>
+                        </div>
+                        <small>30% completo</small>
+                    </div>
+                    <a href="#" class="btn btn-block" data-section="bens">Gerenciar Bens</a>
+                </div>
+
+                <div class="card">
+                    <h3><span class="card-icon">👨‍👩‍👧‍👦</span> Herdeiros</h3>
+                    <p>Número de herdeiros cadastrados:</p>
+                    <h2 id="total-herdeiros">0</h2>
+                    <div class="progress-section">
+                        <p>Informações de contato:</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 20%"></div>
+                        </div>
+                        <small>20% completo</small>
+                    </div>
+                    <a href="#" class="btn btn-block" data-section="herdeiros">Gerenciar Herdeiros</a>
+                </div>
+
+                <div class="card">
+                    <h3><span class="card-icon">⚖️</span> Processo de Inventário</h3>
+                    <p>Status atual do inventário:</p>
+                    <h2>Não Iniciado</h2>
+                    <div class="progress-section">
+                        <p>Progresso geral:</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 10%"></div>
+                        </div>
+                        <small>10% completo</small>
+                    </div>
+                    <a href="#" class="btn btn-block" data-section="inventario">Acompanhar Processo</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="card-icon">⏰</span> Próximos Passos e Prazos</h3>
+                <div class="alert alert-info">
+                    <p><strong>Prazo Legal:</strong> O inventário deve ser aberto em até 60 dias após o óbito.</p>
+                </div>
+                <ul>
+                    <li>Cadastrar todos os bens do inventário</li>
+                    <li>Registrar herdeiros e beneficiários</li>
+                    <li>Listar dívidas e obrigações</li>
+                    <li>Iniciar processo de partilha</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Bens Section -->
+        <section id="bens-section" class="hidden">
+            <div class="form-section">
+                <h2><span class="card-icon">🏠</span> Cadastro de Bens</h2>
+                <form id="bens-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipo-bem">Tipo de Bem</label>
+                            <select id="tipo-bem" class="form-control" required>
+                                <option value="">Selecione...</option>
+                                <option value="imovel">Imóvel</option>
+                                <option value="veiculo">Veículo</option>
+                                <option value="investimento">Investimento</option>
+                                <option value="conta-bancaria">Conta Bancária</option>
+                                <option value="objeto-pessoal">Objeto Pessoal</option>
+                                <option value="bem-digital">Bem Digital</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="valor-bem">Valor (R$)</label>
+                            <input type="number" id="valor-bem" class="form-control" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao-bem">Descrição do Bem</label>
+                        <input type="text" id="descricao-bem" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="documentos-bem">Documentos Comprobatórios</label>
+                        <input type="file" id="documentos-bem" class="form-control" multiple>
+                        <small>Faça upload dos documentos que comprovam a propriedade (máx. 5 arquivos)</small>
+                    </div>
+                    <button type="submit" class="btn">Adicionar Bem</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Bens Cadastrados</h2>
+                <div class="table-responsive">
+                    <table id="tabela-bens">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th>Valor (R$)</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dados serão preenchidos via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-2">
+                    <p>Valor total do inventário: <strong id="valor-total-inventario">R$ 0,00</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Herdeiros Section -->
+        <section id="herdeiros-section" class="hidden">
+            <div class="form-section">
+                <h2><span class="card-icon">👨‍👩‍👧‍👦</span> Cadastro de Herdeiros</h2>
+                <form id="herdeiros-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome-herdeiro">Nome Completo</label>
+                            <input type="text" id="nome-herdeiro" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="parentesco">Parentesco</label>
+                            <select id="parentesco" class="form-control" required>
+                                <option value="">Selecione...</option>
+                                <option value="conjuge">Cônjuge</option>
+                                <option value="filho">Filho(a)</option>
+                                <option value="pai">Pai/Mãe</option>
+                                <option value="irmao">Irmão(ã)</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="percentual-heranca">Percentual da Herança (%)</label>
+                            <input type="number" id="percentual-heranca" class="form-control" min="0" max="100"
+                                step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contato-herdeiro">Contato</label>
+                            <input type="text" id="contato-herdeiro" class="form-control"
+                                placeholder="Telefone ou E-mail" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Adicionar Herdeiro</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Herdeiros Cadastrados</h2>
+                <div class="table-responsive">
+                    <table id="tabela-herdeiros">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Parentesco</th>
+                                <th>Percentual</th>
+                                <th>Contato</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dados serão preenchidos via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="alert alert-warning mt-2">
+                    <p><strong>Importante:</strong> A soma dos percentuais dos herdeiros deve ser igual a 100%.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dívidas Section -->
+        <section id="dividas-section" class="hidden">
+            <div class="form-section">
+                <h2><span class="card-icon">💳</span> Cadastro de Dívidas e Obrigações</h2>
+                <form id="dividas-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tipo-divida">Tipo de Dívida</label>
+                            <select id="tipo-divida" class="form-control" required>
+                                <option value="">Selecione...</option>
+                                <option value="emprestimo">Empréstimo</option>
+                                <option value="financiamento">Financiamento</option>
+                                <option value="cartao-credito">Cartão de Crédito</option>
+                                <option value="imposto">Imposto</option>
+                                <option value="conta">Conta em Atraso</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="valor-divida">Valor (R$)</label>
+                            <input type="number" id="valor-divida" class="form-control" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="credor-divida">Credor</label>
+                        <input type="text" id="credor-divida" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status-divida">Status</label>
+                        <select id="status-divida" class="form-control" required>
+                            <option value="pendente">Pendente</option>
+                            <option value="pago">Pago</option>
+                            <option value="negociacao">Em Negociação</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Adicionar Dívida</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Dívidas Cadastradas</h2>
+                <div class="table-responsive">
+                    <table id="tabela-dividas">
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Credor</th>
+                                <th>Valor (R$)</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dados serão preenchidos via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-2">
+                    <p>Total de dívidas: <strong id="valor-total-dividas">R$ 0,00</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Processo de Inventário Section -->
+        <section id="inventario-section" class="hidden">
+            <div class="form-section">
+                <h2><span class="card-icon">⚖️</span> Processo de Inventário</h2>
+                <div class="progress-section mb-2">
+                    <p>Progresso do Inventário:</p>
+                    <div class="progress-bar">
+                        <div class="progress" id="progresso-inventario" style="width: 10%"></div>
+                    </div>
+                    <small id="texto-progresso">10% completo</small>
+                </div>
+
+                <div class="card">
+                    <h3>Etapas do Processo</h3>
+                    <ol>
+                        <li><strong>Cadastro de Bens</strong> - Listar todos os bens do falecido</li>
+                        <li><strong>Identificação de Herdeiros</strong> - Registrar todos os herdeiros legais</li>
+                        <li><strong>Apuração de Dívidas</strong> - Relacionar todas as obrigações financeiras</li>
+                        <li><strong>Liquidez do Patrimônio</strong> - Calcular o patrimônio líquido</li>
+                        <li><strong>Partilha dos Bens</strong> - Distribuir os bens conforme testamento ou lei</li>
+                        <li><strong>Documentação Final</strong> - Gerar relatórios e documentos para cartório</li>
+                    </ol>
+                </div>
+
+                <div class="card mt-2">
+                    <h3>Calculadora de Partilha</h3>
+                    <p>Valor total do inventário: <strong id="valor-inventario-partilha">R$ 0,00</strong></p>
+                    <p>Total de dívidas: <strong id="valor-dividas-partilha">R$ 0,00</strong></p>
+                    <p>Patrimônio líquido: <strong id="patrimonio-liquido">R$ 0,00</strong></p>
+
+                    <div class="mt-2">
+                        <h4>Distribuição para Herdeiros</h4>
+                        <div id="distribuicao-herdeiros">
+                            <!-- Distribuição será calculada via JavaScript -->
+                        </div>
+                    </div>
+
+                    <button class="btn mt-2" id="calcular-partilha-btn">Calcular Partilha</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentos Section -->
+        <section id="documentos-section" class="hidden">
+            <div class="form-section">
+                <h2><span class="card-icon">📄</span> Documentos e Relatórios</h2>
+
+                <div class="dashboard">
+                    <div class="card">
+                        <h3>Declarações de Inventário</h3>
+                        <p>Gere declarações para apresentação em cartório</p>
+                        <button class="btn btn-block" id="gerar-declaracao-btn">Gerar Declaração</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Relatórios de Partilha</h3>
+                        <p>Relatórios detalhados da distribuição dos bens</p>
+                        <button class="btn btn-block" id="gerar-relatorio-btn">Gerar Relatório</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Comprovantes de Transferência</h3>
+                        <p>Documentos para comprovar transferência de bens</p>
+                        <button class="btn btn-block" id="gerar-comprovante-btn">Gerar Comprovante</button>
+                    </div>
+                </div>
+
+                <div class="card mt-2">
+                    <h3>Documentos Gerados</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Documento</th>
+                                    <th>Data de Geração</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nenhum documento gerado ainda</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>Serenity - Sistema de Gestão de Inventário Pós-Óbito</p>
+            <a href="#" class="support-link">
+                <span>📞</span> Suporte Especializado
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Dados da aplicação
+        let bens = [];
+        let herdeiros = [];
+        let dividas = [];
+        let documentos = [];
+
+        // Elementos da interface
+        const sections = {
+            dashboard: document.getElementById('dashboard-section'),
+            bens: document.getElementById('bens-section'),
+            herdeiros: document.getElementById('herdeiros-section'),
+            dividas: document.getElementById('dividas-section'),
+            inventario: document.getElementById('inventario-section'),
+            documentos: document.getElementById('documentos-section')
+        };
+
+        // Navegação entre seções
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionName = e.target.getAttribute('data-section');
+
+                // Atualizar navegação ativa
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // Mostrar seção selecionada
+                Object.values(sections).forEach(section => section.classList.add('hidden'));
+                sections[sectionName].classList.remove('hidden');
+            });
+        });
+
+        // Inicialização da aplicação
+        document.addEventListener('DOMContentLoaded', () => {
+            // Atualizar totais no dashboard
+            atualizarDashboard();
+
+            // Configurar formulários
+            configurarFormularios();
+
+            // Configurar botões de ação
+            configurarBotoesAcao();
+        });
+
+        function atualizarDashboard() {
+            document.getElementById('total-bens').textContent = bens.length;
+            document.getElementById('total-herdeiros').textContent = herdeiros.length;
+
+            // Calcular valores totais
+            const valorTotalBens = bens.reduce((total, bem) => total + parseFloat(bem.valor || 0), 0);
+            const valorTotalDividas = dividas.reduce((total, divida) => total + parseFloat(divida.valor || 0), 0);
+
+            document.getElementById('valor-total-inventario').textContent = formatarMoeda(valorTotalBens);
+            document.getElementById('valor-total-dividas').textContent = formatarMoeda(valorTotalDividas);
+
+            // Atualizar tabelas
+            atualizarTabelaBens();
+            atualizarTabelaHerdeiros();
+            atualizarTabelaDividas();
+
+            // Atualizar processo de inventário
+            atualizarProcessoInventario();
+        }
+
+        function configurarFormularios() {
+            // Formulário de bens
+            document.getElementById('bens-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const novoBem = {
+                    id: Date.now(),
+                    tipo: document.getElementById('tipo-bem').value,
+                    descricao: document.getElementById('descricao-bem').value,
+                    valor: document.getElementById('valor-bem').value,
+                    documentos: document.getElementById('documentos-bem').files
+                };
+
+                bens.push(novoBem);
+                atualizarDashboard();
+                e.target.reset();
+
+                // Mostrar mensagem de confirmação
+                alert('Bem adicionado com sucesso!');
+            });
+
+            // Formulário de herdeiros
+            document.getElementById('herdeiros-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const novoHerdeiro = {
+                    id: Date.now(),
+                    nome: document.getElementById('nome-herdeiro').value,
+                    parentesco: document.getElementById('parentesco').value,
+                    percentual: document.getElementById('percentual-heranca').value,
+                    contato: document.getElementById('contato-herdeiro').value
+                };
+
+                herdeiros.push(novoHerdeiro);
+                atualizarDashboard();
+                e.target.reset();
+
+                // Mostrar mensagem de confirmação
+                alert('Herdeiro adicionado com sucesso!');
+            });
+
+            // Formulário de dívidas
+            document.getElementById('dividas-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const novaDivida = {
+                    id: Date.now(),
+                    tipo: document.getElementById('tipo-divida').value,
+                    credor: document.getElementById('credor-divida').value,
+                    valor: document.getElementById('valor-divida').value,
+                    status: document.getElementById('status-divida').value
+                };
+
+                dividas.push(novaDivida);
+                atualizarDashboard();
+                e.target.reset();
+
+                // Mostrar mensagem de confirmação
+                alert('Dívida adicionada com sucesso!');
+            });
+        }
+
+        function configurarBotoesAcao() {
+            // Botão para iniciar processo
+            document.getElementById('start-process-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Processo de inventário iniciado. Vamos guiá-lo através das etapas necessárias.');
+                // Navegar para a seção de bens
+                document.querySelector('nav a[data-section="bens"]').click();
+            });
+
+            // Botão para calcular partilha
+            document.getElementById('calcular-partilha-btn').addEventListener('click', () => {
+                calcularPartilha();
+            });
+
+            // Botões para gerar documentos
+            document.getElementById('gerar-declaracao-btn').addEventListener('click', () => {
+                alert('Declaração de inventário gerada com sucesso!');
+            });
+
+            document.getElementById('gerar-relatorio-btn').addEventListener('click', () => {
+                alert('Relatório de partilha gerado com sucesso!');
+            });
+
+            document.getElementById('gerar-comprovante-btn').addEventListener('click', () => {
+                alert('Comprovante de transferência gerado com sucesso!');
+            });
+        }
+
+        function atualizarTabelaBens() {
+            const tabela = document.getElementById('tabela-bens').getElementsByTagName('tbody')[0];
+            tabela.innerHTML = '';
+
+            bens.forEach(bem => {
+                const linha = tabela.insertRow();
+                linha.innerHTML = `
+                    <td>${formatarTipoBem(bem.tipo)}</td>
+                    <td>${bem.descricao}</td>
+                    <td>${formatarMoeda(bem.valor)}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-edit" data-id="${bem.id}">Editar</button>
+                        <button class="btn btn-sm btn-delete" data-id="${bem.id}">Excluir</button>
+                    </td>
+                `;
+            });
+
+            // Adicionar event listeners para os botões de ação
+            document.querySelectorAll('#tabela-bens .btn-edit').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    // Implementar edição
+                    alert(`Editar bem com ID: ${id}`);
+                });
+            });
+
+            document.querySelectorAll('#tabela-bens .btn-delete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    if (confirm('Tem certeza que deseja excluir este bem?')) {
+                        bens = bens.filter(bem => bem.id !== id);
+                        atualizarDashboard();
+                    }
+                });
+            });
+        }
+
+        function atualizarTabelaHerdeiros() {
+            const tabela = document.getElementById('tabela-herdeiros').getElementsByTagName('tbody')[0];
+            tabela.innerHTML = '';
+
+            herdeiros.forEach(herdeiro => {
+                const linha = tabela.insertRow();
+                linha.innerHTML = `
+                    <td>${herdeiro.nome}</td>
+                    <td>${formatarParentesco(herdeiro.parentesco)}</td>
+                    <td>${herdeiro.percentual}%</td>
+                    <td>${herdeiro.contato}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-edit" data-id="${herdeiro.id}">Editar</button>
+                        <button class="btn btn-sm btn-delete" data-id="${herdeiro.id}">Excluir</button>
+                    </td>
+                `;
+            });
+
+            // Adicionar event listeners para os botões de ação
+            document.querySelectorAll('#tabela-herdeiros .btn-edit').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    // Implementar edição
+                    alert(`Editar herdeiro com ID: ${id}`);
+                });
+            });
+
+            document.querySelectorAll('#tabela-herdeiros .btn-delete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    if (confirm('Tem certeza que deseja excluir este herdeiro?')) {
+                        herdeiros = herdeiros.filter(herdeiro => herdeiro.id !== id);
+                        atualizarDashboard();
+                    }
+                });
+            });
+        }
+
+        function atualizarTabelaDividas() {
+            const tabela = document.getElementById('tabela-dividas').getElementsByTagName('tbody')[0];
+            tabela.innerHTML = '';
+
+            dividas.forEach(divida => {
+                const linha = tabela.insertRow();
+                linha.innerHTML = `
+                    <td>${formatarTipoDivida(divida.tipo)}</td>
+                    <td>${divida.credor}</td>
+                    <td>${formatarMoeda(divida.valor)}</td>
+                    <td>${formatarStatusDivida(divida.status)}</td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-edit" data-id="${divida.id}">Editar</button>
+                        <button class="btn btn-sm btn-delete" data-id="${divida.id}">Excluir</button>
+                    </td>
+                `;
+            });
+
+            // Adicionar event listeners para os botões de ação
+            document.querySelectorAll('#tabela-dividas .btn-edit').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    // Implementar edição
+                    alert(`Editar dívida com ID: ${id}`);
+                });
+            });
+
+            document.querySelectorAll('#tabela-dividas .btn-delete').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const id = parseInt(e.target.getAttribute('data-id'));
+                    if (confirm('Tem certeza que deseja excluir esta dívida?')) {
+                        dividas = dividas.filter(divida => divida.id !== id);
+                        atualizarDashboard();
+                    }
+                });
+            });
+        }
+
+        function atualizarProcessoInventario() {
+            // Calcular progresso baseado nos dados inseridos
+            let progresso = 0;
+
+            if (bens.length > 0) progresso += 25;
+            if (herdeiros.length > 0) progresso += 25;
+            if (dividas.length > 0) progresso += 25;
+            // Os 25% restantes são para a conclusão do processo
+
+            document.getElementById('progresso-inventario').style.width = `${progresso}%`;
+            document.getElementById('texto-progresso').textContent = `${progresso}% completo`;
+
+            // Atualizar valores para a partilha
+            const valorTotalBens = bens.reduce((total, bem) => total + parseFloat(bem.valor || 0), 0);
+            const valorTotalDividas = dividas.reduce((total, divida) => total + parseFloat(divida.valor || 0), 0);
+            const patrimonioLiquido = valorTotalBens - valorTotalDividas;
+
+            document.getElementById('valor-inventario-partilha').textContent = formatarMoeda(valorTotalBens);
+            document.getElementById('valor-dividas-partilha').textContent = formatarMoeda(valorTotalDividas);
+            document.getElementById('patrimonio-liquido').textContent = formatarMoeda(patrimonioLiquido);
+        }
+
+        function calcularPartilha() {
+            const valorTotalBens = bens.reduce((total, bem) => total + parseFloat(bem.valor || 0), 0);
+            const valorTotalDividas = dividas.reduce((total, divida) => total + parseFloat(divida.valor || 0), 0);
+            const patrimonioLiquido = valorTotalBens - valorTotalDividas;
+
+            const distribuicaoDiv = document.getElementById('distribuicao-herdeiros');
+            distribuicaoDiv.innerHTML = '';
+
+            if (herdeiros.length === 0) {
+                distribuicaoDiv.innerHTML = '<p>Não há herdeiros cadastrados para calcular a partilha.</p>';
+                return;
+            }
+
+            // Calcular a soma dos percentuais
+            const somaPercentuais = herdeiros.reduce((total, herdeiro) => total + parseFloat(herdeiro.percentual || 0), 0);
+
+            if (somaPercentuais !== 100) {
+                distribuicaoDiv.innerHTML = `<p class="alert alert-warning">A soma dos percentuais dos herdeiros (${somaPercentuais}%) não é igual a 100%. Ajuste os percentuais antes de calcular a partilha.</p>`;
+                return;
+            }
+
+            // Calcular valores para cada herdeiro
+            let html = '<table><thead><tr><th>Herdeiro</th><th>Percentual</th><th>Valor (R$)</th></tr></thead><tbody>';
+
+            herdeiros.forEach(herdeiro => {
+                const valorPartilha = patrimonioLiquido * (parseFloat(herdeiro.percentual) / 100);
+                html += `<tr>
+                    <td>${herdeiro.nome}</td>
+                    <td>${herdeiro.percentual}%</td>
+                    <td>${formatarMoeda(valorPartilha)}</td>
+                </tr>`;
+            });
+
+            html += `</tbody></table>`;
+            distribuicaoDiv.innerHTML = html;
+        }
+
+        // Funções auxiliares para formatação
+        function formatarMoeda(valor) {
+            return new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            }).format(valor);
+        }
+
+        function formatarTipoBem(tipo) {
+            const tipos = {
+                'imovel': 'Imóvel',
+                'veiculo': 'Veículo',
+                'investimento': 'Investimento',
+                'conta-bancaria': 'Conta Bancária',
+                'objeto-pessoal': 'Objeto Pessoal',
+                'bem-digital': 'Bem Digital',
+                'outro': 'Outro'
+            };
+            return tipos[tipo] || tipo;
+        }
+
+        function formatarParentesco(parentesco) {
+            const parentescos = {
+                'conjuge': 'Cônjuge',
+                'filho': 'Filho(a)',
+                'pai': 'Pai/Mãe',
+                'irmao': 'Irmão(ã)',
+                'outro': 'Outro'
+            };
+            return parentescos[parentesco] || parentesco;
+        }
+
+        function formatarTipoDivida(tipo) {
+            const tipos = {
+                'emprestimo': 'Empréstimo',
+                'financiamento': 'Financiamento',
+                'cartao-credito': 'Cartão de Crédito',
+                'imposto': 'Imposto',
+                'conta': 'Conta em Atraso',
+                'outro': 'Outro'
+            };
+            return tipos[tipo] || tipo;
+        }
+
+        function formatarStatusDivida(status) {
+            const statusMap = {
+                'pendente': 'Pendente',
+                'pago': 'Pago',
+                'negociacao': 'Em Negociação'
+            };
+            return statusMap[status] || status;
+        }
+    </script>
+</body>
+
+</html>

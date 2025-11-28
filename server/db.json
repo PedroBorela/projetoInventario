@@ -1,0 +1,206 @@
+{
+  "bens": [
+    {
+      "tipo": "veiculo",
+      "descricao": "melhor carro",
+      "valorMercado": "300000",
+      "valorVenal": "200000",
+      "matricula": "",
+      "cartorio": "",
+      "inscricaoMunicipal": "",
+      "placa": "sdjfe8344",
+      "renavam": "9876543",
+      "banco": "",
+      "agencia": "",
+      "conta": "",
+      "tipoInvestimento": "",
+      "processoId": 2,
+      "id": 1
+    },
+    {
+      "tipo": "investimento",
+      "descricao": "melhor investimento",
+      "valorMercado": "1230000",
+      "valorVenal": "20000",
+      "matricula": "",
+      "cartorio": "",
+      "inscricaoMunicipal": "",
+      "placa": "",
+      "renavam": "",
+      "banco": "do brasiç",
+      "agencia": "23456",
+      "conta": "3456765",
+      "tipoInvestimento": "tesouro diretto",
+      "processoId": 2,
+      "id": 2
+    },
+    {
+      "tipo": "imovel",
+      "descricao": "a melhor house",
+      "valorMercado": "39474372",
+      "valorVenal": "1230234",
+      "matricula": "567898765",
+      "cartorio": "6788765",
+      "inscricaoMunicipal": "67898765",
+      "placa": "",
+      "renavam": "",
+      "banco": "",
+      "agencia": "",
+      "conta": "",
+      "tipoInvestimento": "",
+      "processoId": "3",
+      "id": 3
+    }
+  ],
+  "herdeiros": [
+    {
+      "nome": "joselia",
+      "parentesco": "filho",
+      "percentual": "10",
+      "contato": "",
+      "processoId": 2,
+      "id": 1
+    },
+    {
+      "nome": "cibere",
+      "parentesco": "filho",
+      "percentual": "10",
+      "contato": "",
+      "processoId": 2,
+      "id": 2
+    },
+    {
+      "nome": "zelia ferreira",
+      "parentesco": "viuvo",
+      "percentual": "50",
+      "contato": "",
+      "processoId": 2,
+      "id": 3
+    },
+    {
+      "nome": "cramer",
+      "parentesco": "neto",
+      "percentual": "65",
+      "contato": "",
+      "processoId": "3",
+      "id": 4
+    },
+    {
+      "nome": "crina",
+      "parentesco": "irmao",
+      "percentual": "35",
+      "contato": "343234",
+      "processoId": "3",
+      "id": 5
+    }
+  ],
+  "dividas": [
+    {
+      "tipo": "cartao-credito",
+      "credor": "allan",
+      "valor": "23000",
+      "status": "pendente",
+      "descricao": "",
+      "processoId": 2,
+      "id": 1
+    },
+    {
+      "tipo": "cartao-credito",
+      "credor": "djames",
+      "valor": "20394580",
+      "status": "pendente",
+      "descricao": "o mais doido",
+      "processoId": "1",
+      "id": 2
+    },
+    {
+      "tipo": "cartao-credito",
+      "credor": "bab",
+      "valor": "1000000",
+      "status": "negociacao",
+      "descricao": "",
+      "processoId": "2",
+      "id": 3
+    },
+    {
+      "tipo": "imposto",
+      "credor": "jobsle",
+      "valor": "12039",
+      "status": "pendente",
+      "descricao": "",
+      "processoId": "3",
+      "id": 4
+    }
+  ],
+  "processo": [
+    {
+      "falecido": {
+        "nome": "Junio",
+        "cpf": "2444545",
+        "dataObito": "2003-02-10",
+        "estadoCivil": "casado",
+        "profissao": "",
+        "nacionalidade": ""
+      },
+      "inventariante": {
+        "nome": "joselia",
+        "cpf": "2365434543",
+        "profissao": "",
+        "estadoCivil": "",
+        "endereco": "rua da conceicao"
+      },
+      "config": {
+        "aliquotaITCMD": 40,
+        "regimeBens": "separacao",
+        "conjuge": "joselia"
+      },
+      "id": 1
+    },
+    {
+      "falecido": {
+        "nome": "Seu tuim",
+        "cpf": "12345",
+        "dataObito": "2012-02-10",
+        "estadoCivil": "casado",
+        "profissao": "",
+        "nacionalidade": ""
+      },
+      "inventariante": {
+        "nome": "Pedro b",
+        "cpf": "123456",
+        "profissao": "",
+        "estadoCivil": "",
+        "endereco": ""
+      },
+      "config": {
+        "aliquotaITCMD": 4,
+        "regimeBens": "parcial",
+        "conjuge": ""
+      },
+      "id": 2
+    },
+    {
+      "falecido": {
+        "nome": "albert",
+        "cpf": "22332",
+        "dataObito": "2334-04-12",
+        "estadoCivil": "divorciado",
+        "profissao": "",
+        "nacionalidade": ""
+      },
+      "inventariante": {
+        "nome": "crobley",
+        "cpf": "12345",
+        "profissao": "",
+        "estadoCivil": "",
+        "endereco": ""
+      },
+      "config": {
+        "aliquotaITCMD": 4,
+        "regimeBens": "parcial",
+        "conjuge": ""
+      },
+      "id": 3
+    }
+  ]
+}
