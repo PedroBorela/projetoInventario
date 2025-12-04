@@ -1,173 +1,131 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "email": "pedro@123.com",
+      "password": "12345",
+      "name": "pedro"
+    },
+    {
+      "id": 2,
+      "email": "jose@123.com",
+      "password": "12345",
+      "name": "jose"
+    },
+    {
+      "id": 3,
+      "email": "lucas@123.com",
+      "password": "12345",
+      "name": "Lucas"
+    },
+    {
+      "id": 4,
+      "email": "dev@123.com",
+      "password": "12345",
+      "name": "dev"
+    }
+  ],
   "bens": [
     {
-      "tipo": "veiculo",
-      "descricao": "melhor carro",
-      "valorMercado": "300000",
-      "valorVenal": "200000",
-      "matricula": "",
-      "cartorio": "",
-      "inscricaoMunicipal": "",
-      "placa": "sdjfe8344",
-      "renavam": "9876543",
+      "tipo": "imovel",
+      "descricao": "cas chque",
+      "valorMercado": "546000",
+      "valorVenal": "10000",
+      "matricula": "sla",
+      "cartorio": "aham",
+      "inscricaoMunicipal": "23456",
+      "placa": "",
+      "renavam": "",
       "banco": "",
       "agencia": "",
       "conta": "",
       "tipoInvestimento": "",
-      "processoId": 2,
+      "processoId": "4",
       "id": 1
     },
     {
-      "tipo": "investimento",
-      "descricao": "melhor investimento",
-      "valorMercado": "1230000",
-      "valorVenal": "20000",
+      "tipo": "veiculo",
+      "descricao": "ccarro top",
+      "valorMercado": "23900",
+      "valorVenal": "23000",
       "matricula": "",
       "cartorio": "",
       "inscricaoMunicipal": "",
-      "placa": "",
-      "renavam": "",
-      "banco": "do brasiç",
-      "agencia": "23456",
-      "conta": "3456765",
-      "tipoInvestimento": "tesouro diretto",
-      "processoId": 2,
-      "id": 2
-    },
-    {
-      "tipo": "imovel",
-      "descricao": "a melhor house",
-      "valorMercado": "39474372",
-      "valorVenal": "1230234",
-      "matricula": "567898765",
-      "cartorio": "6788765",
-      "inscricaoMunicipal": "67898765",
-      "placa": "",
-      "renavam": "",
+      "placa": "223456yh",
+      "renavam": "234rtgb",
       "banco": "",
       "agencia": "",
       "conta": "",
       "tipoInvestimento": "",
-      "processoId": "3",
-      "id": 3
+      "processoId": "4",
+      "id": 2
     }
   ],
   "herdeiros": [
     {
-      "nome": "joselia",
-      "parentesco": "filho",
-      "percentual": "10",
-      "contato": "",
-      "processoId": 2,
-      "id": 1
-    },
-    {
-      "nome": "cibere",
-      "parentesco": "filho",
-      "percentual": "10",
-      "contato": "",
-      "processoId": 2,
-      "id": 2
-    },
-    {
-      "nome": "zelia ferreira",
-      "parentesco": "viuvo",
-      "percentual": "50",
-      "contato": "",
-      "processoId": 2,
-      "id": 3
-    },
-    {
-      "nome": "cramer",
-      "parentesco": "neto",
-      "percentual": "65",
-      "contato": "",
-      "processoId": "3",
-      "id": 4
-    },
-    {
-      "nome": "crina",
+      "nome": "royalmen",
       "parentesco": "irmao",
-      "percentual": "35",
-      "contato": "343234",
-      "processoId": "3",
-      "id": 5
+      "contato": "asdfg",
+      "processoId": "4",
+      "id": 1,
+      "percentual": "50.00"
+    },
+    {
+      "nome": "yuri",
+      "parentesco": "viuvo",
+      "contato": "45654",
+      "processoId": "4",
+      "id": 2,
+      "percentual": "50.00"
     }
   ],
   "dividas": [
     {
-      "tipo": "cartao-credito",
-      "credor": "allan",
-      "valor": "23000",
-      "status": "pendente",
-      "descricao": "",
-      "processoId": 2,
-      "id": 1
-    },
-    {
-      "tipo": "cartao-credito",
-      "credor": "djames",
-      "valor": "20394580",
-      "status": "pendente",
-      "descricao": "o mais doido",
-      "processoId": "1",
-      "id": 2
-    },
-    {
-      "tipo": "cartao-credito",
-      "credor": "bab",
-      "valor": "1000000",
-      "status": "negociacao",
-      "descricao": "",
-      "processoId": "2",
-      "id": 3
-    },
-    {
       "tipo": "imposto",
-      "credor": "jobsle",
-      "valor": "12039",
+      "credor": "bb",
+      "valor": "21589",
       "status": "pendente",
-      "descricao": "",
-      "processoId": "3",
-      "id": 4
+      "descricao": "faltaa",
+      "processoId": "4",
+      "id": 1
     }
   ],
   "processo": [
     {
       "falecido": {
-        "nome": "Junio",
-        "cpf": "2444545",
-        "dataObito": "2003-02-10",
+        "nome": "Water",
+        "cpf": "23432",
+        "dataObito": "4300-10-05",
         "estadoCivil": "casado",
         "profissao": "",
         "nacionalidade": ""
       },
       "inventariante": {
-        "nome": "joselia",
-        "cpf": "2365434543",
+        "nome": "Jose",
+        "cpf": "234",
         "profissao": "",
         "estadoCivil": "",
-        "endereco": "rua da conceicao"
+        "endereco": ""
       },
       "config": {
-        "aliquotaITCMD": 40,
-        "regimeBens": "separacao",
-        "conjuge": "joselia"
+        "aliquotaITCMD": 4,
+        "regimeBens": "parcial",
+        "conjuge": ""
       },
       "id": 1
     },
     {
       "falecido": {
-        "nome": "Seu tuim",
+        "nome": "deivdi",
         "cpf": "12345",
-        "dataObito": "2012-02-10",
-        "estadoCivil": "casado",
+        "dataObito": "2303-03-03",
+        "estadoCivil": "solteiro",
         "profissao": "",
         "nacionalidade": ""
       },
       "inventariante": {
-        "nome": "Pedro b",
-        "cpf": "123456",
+        "nome": "levi",
+        "cpf": "23444",
         "profissao": "",
         "estadoCivil": "",
         "endereco": ""
@@ -181,16 +139,16 @@
     },
     {
       "falecido": {
-        "nome": "albert",
-        "cpf": "22332",
-        "dataObito": "2334-04-12",
-        "estadoCivil": "divorciado",
+        "nome": "deiv",
+        "cpf": "12345",
+        "dataObito": "2002-03-03",
+        "estadoCivil": "viuvo",
         "profissao": "",
         "nacionalidade": ""
       },
       "inventariante": {
-        "nome": "crobley",
-        "cpf": "12345",
+        "nome": "levi",
+        "cpf": "1234",
         "profissao": "",
         "estadoCivil": "",
         "endereco": ""
@@ -201,6 +159,78 @@
         "conjuge": ""
       },
       "id": 3
+    },
+    {
+      "falecido": {
+        "nome": "tentei",
+        "cpf": "12345",
+        "dataObito": "1220-04-05",
+        "estadoCivil": "casado",
+        "profissao": "",
+        "nacionalidade": ""
+      },
+      "inventariante": {
+        "nome": "eumrm",
+        "cpf": "3432",
+        "profissao": "",
+        "estadoCivil": "",
+        "endereco": "rua conceituada"
+      },
+      "config": {
+        "aliquotaITCMD": 6,
+        "regimeBens": "parcial",
+        "conjuge": "josef"
+      },
+      "id": 4,
+      "userId": 1
+    },
+    {
+      "falecido": {
+        "nome": "voldermort",
+        "cpf": "66666",
+        "dataObito": "2001-09-11",
+        "estadoCivil": "casado",
+        "profissao": "",
+        "nacionalidade": ""
+      },
+      "inventariante": {
+        "nome": "harry poter",
+        "cpf": "12345",
+        "profissao": "",
+        "estadoCivil": "",
+        "endereco": ""
+      },
+      "config": {
+        "aliquotaITCMD": 4,
+        "regimeBens": "parcial",
+        "conjuge": ""
+      },
+      "id": 5,
+      "userId": 4
+    },
+    {
+      "falecido": {
+        "nome": "voldermort",
+        "cpf": "66666",
+        "dataObito": "2001-09-11",
+        "estadoCivil": "casado",
+        "profissao": "",
+        "nacionalidade": ""
+      },
+      "inventariante": {
+        "nome": "harry poter",
+        "cpf": "12345",
+        "profissao": "",
+        "estadoCivil": "",
+        "endereco": ""
+      },
+      "config": {
+        "aliquotaITCMD": 4,
+        "regimeBens": "parcial",
+        "conjuge": ""
+      },
+      "id": 6,
+      "userId": 4
     }
   ]
 }
